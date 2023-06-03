@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans 'Cart' %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box-element">
+                <a class="btn btn-outline-dark add-btn" href='/'> &#x2190 Continue Shopping</a>
+                <br>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th><h5>Items: <strong>5</strong></h5></th>
+                        <th><h5>Total: <strong>$40</strong></h5></th>
+                        <th>
+                            <a href="/checkout" style='float: right; margin: 5px' class="btn btn-success">Checkout</a>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="box-element">
+                <div class="cart-row">
+                    <div style='flex: 2'></div>
+                    <div style='flex: 2'><strong>Item</strong></div>
+                    <div style='flex: 1'><strong>Price</strong></div>
+                    <div style='flex: 1'><strong>Quantity</strong></div>
+                    <div style='flex: 1'><strong>Total</strong></div>
+                </div>
+
+                <div class="cart-row">
+                    <div style='flex: 2'><img class='row-image' src="{% static 'img/product.gif' %}" alt=""></div>
+                    <div style='flex: 2'>Shirt</div>
+                    <div style='flex: 1'>$40</div>
+                    <div style='flex: 1'><p class="quantity">2</p>
+                        <div class="quantity">
+                            <p class="chg-quantity">&#x2191;</p>
+                            <p class="chg-quantity">&#x2193;</p>
+                        </div>
+                    </div>
+                    <div style='flex: 1'>$80</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock content %}

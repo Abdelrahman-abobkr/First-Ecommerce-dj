@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans 'Checkout' %}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="box-element" id='form-wrapper'>
+                <form id="form" class="form-group">
+                    <div id="user-info">
+                        <div class="form-field">
+                            <input required autofocus='True' type="text" name="name" placeholder="Name.." class="form-control">
+                        </div>
+                        <div class="form-field">
+                            <input required type="email" name="email" placeholder="Email.." class="form-control">
+                        </div>
+                    </div>
+
+                    <div id="shipping-info">
+                        <hr>
+                        <p>Shipping Information:</p>
+                        <hr>
+
+                        <div class="form-field">
+                            <input type="text" name="name" placeholder="Address.." class="form-control">
+                        </div>
+
+                        <div class="form-field">
+                            <input type="text" name="city" placeholder="City.." class="form-control">
+                        </div>
+                        <div class="form-field">
+                            <input type="text" name="state" placeholder="State.." class="form-control">
+                        </div>
+
+                        <div class="form-field">
+                            <input type="number" name="email" placeholder="Zip Code.." class="form-control">
+                        </div>
+
+                    </div>
+
+                    <hr>
+                    <input id='form-button' type="submit" value="Continue" class="btn btn-success w-100">
+                </form>
+            </div>
+
+            <br>
+
+            <div class="box-element hidden" id="payment-info">
+                <small> Paypal Options</small>
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+            <div class="box-element">
+                <a class="btn btn-outline-dark" href='/cart'> &#x2190; Back To Cart</a>
+
+                <hr>
+                <h3>Order Summary</h3>
+                <hr>
+
+                <div class="cart-row">
+                    <div style='flex:2'><img class='row-image' src="{% static 'img/product.gif' %}" alt=""></div>
+                    <div style='flex:2'><p>Shirt</p></div>
+                    <div style='flex:1'><p>$40.00</p></div>
+                    <div style='flex:1'><p>X2</p></div>
+                </div>
+
+                <h5>Items: 2</h5>
+                <h5>Total: $80</h5>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
