@@ -6,38 +6,24 @@
 
 {% block content %}
     <div class="row">
-
+        
+        {% for product in products %}
         <div class="col-lg-4">
-            <img class='thumbnail' src="{% static 'img/product.gif' %}">
+            {% if product.img %}
+            <img class='thumbnail' src="{{ product.img.url }}">
+            {% else %}
+            <img class='thumbnail' src="#">
+            {% endif %}
             <div class="box-element product">
-                <h6><strong>Product</strong></h6>
+                <h5><strong>{{ product }}</strong></h5>
                 <hr>
                 <button class="btn btn-outline-secondary add-btn">Add To Cart</button>
                 <a href="#" class="btn btn-outline-success">View</a>
-                <h4 style='display: inline-block; float: right'><strong>$40</strong></h4>
+                <h4 style='display: inline-block; float: right'><strong>${{ product.price|floatformat:2 }}</strong></h4>
             </div>
         </div>
+        
+        {% endfor %} 
 
-        <div class="col-lg-4">
-            <img class='thumbnail' src="{% static 'img/product.gif' %}">
-            <div class="box-element product">
-                <h6><strong>Product</strong></h6>
-                <hr>
-                <button class="btn btn-outline-secondary add-btn">Add To Cart</button>
-                <a href="#" class="btn btn-outline-success">View</a>
-                <h4 style='display: inline-block; float: right'><strong>$40</strong></h4>
-            </div>
-        </div>
-
-        <div class="col-lg-4">
-            <img class='thumbnail' src="{% static 'img/product.gif' %}">
-            <div class="box-element product">
-                <h6><strong>Product</strong></h6>
-                <hr>
-                <button class="btn btn-outline-secondary add-btn">Add To Cart</button>
-                <a href="#" class="btn btn-outline-success">View</a>
-                <h4 style='display: inline-block; float: right'><strong>$40</strong></h4>
-            </div>
-        </div>
-    </div>
+    </div><br>
 {% endblock content %}
