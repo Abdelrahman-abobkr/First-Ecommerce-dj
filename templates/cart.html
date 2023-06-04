@@ -13,8 +13,8 @@
                 <br>
                 <table class="table">
                     <tr>
-                        <th><h5>Items: <strong>5</strong></h5></th>
-                        <th><h5>Total: <strong>$40</strong></h5></th>
+                        <th><h5>Items: <strong>{{ order.get_total_items }}</strong></h5></th>
+                        <th><h5>Total: <strong>${{ order.get_cart_total|floatformat:2 }}</strong></h5></th>
                         <th>
                             <a href="/checkout" style='float: right; margin: 5px' class="btn btn-success">Checkout</a>
                         </th>
@@ -32,19 +32,25 @@
                     <div style='flex: 1'><strong>Quantity</strong></div>
                     <div style='flex: 1'><strong>Total</strong></div>
                 </div>
-
+                
+                {% for item in items %}
                 <div class="cart-row">
-                    <div style='flex: 2'><img class='row-image' src="{% static 'img/product.gif' %}" alt=""></div>
-                    <div style='flex: 2'>Shirt</div>
-                    <div style='flex: 1'>$40</div>
-                    <div style='flex: 1'><p class="quantity">2</p>
+                    {% if item.product.img %}
+                    <div style='flex: 2'><img class='row-image' src="{{item.product.img.url}}" alt=""></div>
+                    {% else %}
+                    <div style='flex: 2'><img class='row-image' src="#" alt=""></div>
+                    {% endif %}
+                    <div style='flex: 2'>{{ item.product.name }}</div>
+                    <div style='flex: 1'>${{ item.product.price|floatformat:2 }}</div>
+                    <div style='flex: 1'><p class="quantity">{{ item.quantity }}</p>
                         <div class="quantity">
                             <img class="chg-quantity" src="{% static 'img/arrow-up.png' %}" alt="">
                             <img class="chg-quantity" src="{% static 'img/arrow-down.png' %}" alt="">
                         </div>
                     </div>
-                    <div style='flex: 1'>$80</div>
+                    <div style='flex: 1'>${{ item.get_total|floatformat:2 }}</div>
                 </div>
+                {% endfor %}
             </div>
         </div>
 
